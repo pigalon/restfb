@@ -4,7 +4,7 @@ package com.pigalon.restfb.data;
  * 
  * @author Pierrick
  *
- * Ugly, but I use first this interface to set all var
+ * Ugly, but I use first this interface to set all vars
  * the one most importante are : MY_ACCESS_TOKEN and ID_INDIE_GROUP
  *
  */
@@ -14,7 +14,7 @@ public interface Constants {
 	/*
 	 * FIRST STEP : PUT YOUR ACCESS TOKEN HERE !!!
 	 */
-	static String MY_ACCESS_TOKEN = "AAACEdEose0cBACenf5md8bY0ODVxk4UwZBBDkSZAWzUsValmZCnxNqfrt4xkwerA4CUHHcYMIJiXTKzZBcw4hLCSNwi3HcQgdMXERrImHIfSGzXPatEC";
+	static String MY_ACCESS_TOKEN = "";
 	
 	/*
 	 * PUT THE ID OF THE GROUP HERE, ex for indie group = 125514040798822
@@ -24,7 +24,7 @@ public interface Constants {
 	/*
 	 * PUT THE NAME OF THE EXPORT FILE
 	 */
-	static String EXPORT_FILE = "testo.csv";
+	static String EXPORT_FILE = "test.csv";
 	
 	
 	//*************** DON'T TOUCH THE FOLLOWING CONSTANTS ********************
