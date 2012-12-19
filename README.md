@@ -46,13 +46,15 @@ com.pigalon.restfb.Constantes :
 4. You get a csv with :
 id of the post | creation Date | link type | link id | artist - title | user who posted this movie | Likes number
 
-about link type : 
+about link type :
+---------------- 
 	- B -> Bandcamp
 	- S -> Soundcloud
 	- V -> Vimeo 
 	- Y -> Youtube
 
-about link id, you have to complete the url to retrieve the movie : 
+about link id, you have to complete the url to retrieve the movie :
+------------- 
 	- B -> you have to add .bandcamp.com after
 	- S -> you have to add soundcloud.com/ before 
 	- V -> you have to add vimeo.com/ before
