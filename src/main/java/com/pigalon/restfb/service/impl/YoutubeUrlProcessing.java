@@ -11,20 +11,24 @@ public class YoutubeUrlProcessing implements UrlProcessing {
 		String query = null;
 		if(strUrl != null){
 			URL url = new URL(strUrl);
-			query = url.getQuery();
-			// get only v param from query
-			// fisrt postion after v= and end nothing or &
 			
-			query = query.substring(query.indexOf("v=")+2);
-			int cutEndFlag = query.indexOf("&");
-			if(cutEndFlag > 0){
-				query = query.substring(0, cutEndFlag);
+			// get the query where appear the id movie
+			query = url.getQuery();
+			
+			// we need only v param from query
+			// fisrt postion after v= and end nothing or &
+			// if no param skip this processing and return null 
+			if(query!=null){
+				query = query.substring(query.indexOf("v=")+2);
+				int cutEndFlag = query.indexOf("&");
+				if(cutEndFlag > 0){
+					query = query.substring(0, cutEndFlag);
+				}
+			}
+			else{
+				throw new Exception("no query to process");
 			}
 		}
-		else{
-			throw new Exception("url is null");
-		}
-		
 		return query;
 	}
 
