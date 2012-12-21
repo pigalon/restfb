@@ -1,3 +1,4 @@
+# link types :
 youtube message type : 
   "picture": "https://fbexternal-a.akamaihd.net/safe_image.php?d=AQADEE8RsTGAtOTl&w=130&h=130&url=http%3A%2F%2Fi1.ytimg.com%2Fvi%2FTZpYTAICdbY%2Fmqdefault.jpg", 
         "link": "http://www.youtube.com/watch?v=TZpYTAICdbY", 
