@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
+import com.pigalon.restfb.dao.RestFBDao;
+import com.pigalon.restfb.dao.impl.RestFBDaoImpl;
 import com.pigalon.restfb.data.Constants;
 import com.pigalon.restfb.service.HandlerService;
 import com.pigalon.restfb.service.RestFBService;
@@ -15,6 +17,14 @@ import com.restfb.types.Post;
 
 
 public class RestFBServiceImpl implements RestFBService {
+	
+	private static RestFBDao restFBDao;
+	
+	public RestFBServiceImpl(){
+		if(restFBDao == null){
+			restFBDao = new RestFBDaoImpl();
+		}
+	}
 	
 	/*
 	 * (non-Javadoc)
