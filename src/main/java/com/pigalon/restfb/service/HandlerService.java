@@ -24,4 +24,10 @@ public interface HandlerService {
      * @return String : type + id / or null if no query or processing fail
      */
 	String returnUrIdlAndType(Post post);
+	/**
+	 * cut the complete id and return only the post id : easy to sort
+	 * @param completeId
+	 * @return String : cuttedId
+	 */
+	String returnPostIdOnly(String completeId);
 }

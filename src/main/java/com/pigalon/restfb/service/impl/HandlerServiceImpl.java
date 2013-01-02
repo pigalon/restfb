@@ -15,7 +15,7 @@ public class HandlerServiceImpl implements HandlerService {
 	public String constructExportLine(Post post, String urlTypeAndId, StringBuffer buffer)throws Exception{
 		
 		buffer = new StringBuffer();
-		buffer.append(post.getId()).append(" ; ")
+		buffer.append(returnPostIdOnly(post.getId())).append(" ; ")
 		.append(post.getCreatedTime()).append(" ; ")
 		.append(urlTypeAndId).append(" ; ")
     	.append(post.getName()).append(" ; ")
@@ -28,7 +28,7 @@ public class HandlerServiceImpl implements HandlerService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.pigalon.restfb.service.HandlerService#returnUrIdlAndType((Post post)
+	 * @see com.pigalon.restfb.service.HandlerService#returnUrIdlAndType(Post post)
 	 */
 	public String returnUrIdlAndType(Post post){
 		try {
@@ -52,6 +52,21 @@ public class HandlerServiceImpl implements HandlerService {
 			// we need to continue
 		}
 		
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.pigalon.restfb.service.HandlerService#returnPostIdOnly(String completeId)
+	 */
+	public String returnPostIdOnly(String completeId) {
+		if(completeId!=null){
+			String [] strTab = completeId.split("_");
+			if(strTab !=null && strTab.length>1){
+				return strTab[1];
+			}
+		}
 		return null;
 	}
 
