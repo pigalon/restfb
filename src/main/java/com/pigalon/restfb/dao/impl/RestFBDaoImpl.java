@@ -7,9 +7,8 @@ import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
 import com.pigalon.restfb.dao.RestFBDao;
 import com.pigalon.restfb.data.Constants;
+import com.pigalon.restfb.data.DataHandler;
 import com.pigalon.restfb.exception.DAOException;
-import com.pigalon.restfb.service.HandlerService;
-import com.pigalon.restfb.service.impl.HandlerServiceImpl;
 import com.restfb.Connection;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
@@ -26,15 +25,11 @@ public class RestFBDaoImpl implements RestFBDao {
 	 */
 	final FacebookClient facebookClient = new DefaultFacebookClient(Constants.MY_ACCESS_TOKEN);
 	
-	/**
-	 * handler service : to cut ids
-	 */
-	final HandlerService handlerService = new HandlerServiceImpl();
-	
+
 
 	Function<Post, String> applyFunction = new Function<Post, String>() {
 	   public String apply(final Post obj) {
-	      return handlerService.returnPostIdOnly(obj.getId());
+	      return DataHandler.returnPostIdOnly(obj.getId());
 	   }
 	};
 		
@@ -78,7 +73,7 @@ public class RestFBDaoImpl implements RestFBDao {
 		    	for (Post post : myFeedConnectionPage){
 		    		
 		    		// reach the limit
-		    		if((cpt)>=nbLimit){
+		    		if( nbLimit > 0 && cpt>=nbLimit){
 		    			return postOrdering.sortedCopy(postList);
 		    		}
 		    		
@@ -86,7 +81,7 @@ public class RestFBDaoImpl implements RestFBDao {
 	       			if(post!=null && post.getLink()!=null ){
 
 	       				//buffer = null;
-	       				urlTypeAndId = handlerService.returnUrIdlAndType(post);	
+	       				urlTypeAndId = DataHandler.returnUrIdlAndType(post);	
 	       			 	
 			    		if(urlTypeAndId !=null){
 		       				cpt++; // here sure about grab link
@@ -111,7 +106,7 @@ public class RestFBDaoImpl implements RestFBDao {
 	public String getLastPostIdFromGroup(String groupName) {
 		 Connection<Post> connection =  getLimitedGroupFeed(groupName, 1);
 		 if(connection.getData()!=null){
-			 return handlerService.returnPostIdOnly(connection.getData().get(0).getId());
+			 return DataHandler.returnPostIdOnly(connection.getData().get(0).getId());
 		 }
 		 return null;
 	}

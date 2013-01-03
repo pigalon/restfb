@@ -26,7 +26,7 @@ public interface RestFBDao {
 	/**
 	 * get all Posts from the beginning or from the id limit
 	 * @param groupName
-	 * @param idLimit
+	 * @param idLimit : number of posts to grab from FB, if = 0 => no limit
 	 * @return List<Post>
 	 */
 	List<Post> getPostsFromGroup(String groupName, int nbLimit);

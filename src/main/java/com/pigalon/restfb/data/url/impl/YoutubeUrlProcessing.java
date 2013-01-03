@@ -1,9 +1,9 @@
-package com.pigalon.restfb.service.impl;
+package com.pigalon.restfb.data.url.impl;
 
 import java.net.URL;
 
 
-import com.pigalon.restfb.service.UrlProcessing;
+import com.pigalon.restfb.data.url.UrlProcessing;
 
 public class YoutubeUrlProcessing implements UrlProcessing {
 

@@ -1,4 +1,4 @@
-package com.pigalon.restfb.service;
+package com.pigalon.restfb.data.url;
 
 public interface UrlProcessing {
 	

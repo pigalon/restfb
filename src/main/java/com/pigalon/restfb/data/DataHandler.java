@@ -1,18 +1,23 @@
-package com.pigalon.restfb.service.impl;
+package com.pigalon.restfb.data;
 
-import com.pigalon.restfb.data.LinkUrl;
-import com.pigalon.restfb.service.HandlerService;
+import com.pigalon.restfb.data.url.impl.BandcampUrlProcessing;
+import com.pigalon.restfb.data.url.impl.SoundCloundUrlProcessing;
+import com.pigalon.restfb.data.url.impl.VimeoUrlProcessing;
+import com.pigalon.restfb.data.url.impl.YoutubeUrlProcessing;
 import com.restfb.types.Post;
 
-public class HandlerServiceImpl implements HandlerService {
+public final class DataHandler {
 
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.pigalon.restfb.service.HandlerService#constructExportLine((Post post, String urlTypeAndId, StringBuffer buffer)
+	/**
+	 * construction of the data line to storage into csv file
+	 * @param post
+	 * @param urlTypeAndId
+	 * @param buffer : StringBuffer to concat 
+	 * @return String : to write in a file
+	 * @throws Exception
 	 */
-	public String constructExportLine(Post post, String urlTypeAndId, StringBuffer buffer)throws Exception{
+	public static String constructExportLine(Post post, String urlTypeAndId, StringBuffer buffer)throws Exception{
 		
 		buffer = new StringBuffer();
 		buffer.append(returnPostIdOnly(post.getId())).append(" ; ")
@@ -25,12 +30,16 @@ public class HandlerServiceImpl implements HandlerService {
 		return buffer.toString();
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.pigalon.restfb.service.HandlerService#returnUrIdlAndType(Post post)
-	 */
-	public String returnUrIdlAndType(Post post){
+	/**
+     * return initial type of the url concat with id processed from url
+     *
+     * Ex : Y ; 12r5r651r => Y for Youtube and the id number of the movie
+     *      Juste add before http://www.youtube.com?v= + this id number
+     *      
+     * @param post : Object of the RestFB API
+     * @return String : type + id / or null if no query or processing fail
+     */
+	public static String returnUrIdlAndType(Post post){
 		try {
 			
 			if(post.getLink().contains(LinkUrl.YOUTUBE.getUrlPart())){
@@ -54,12 +63,12 @@ public class HandlerServiceImpl implements HandlerService {
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.pigalon.restfb.service.HandlerService#returnPostIdOnly(String completeId)
+	/**
+	 * cut the complete id and return only the post id : easy to sort
+	 * @param completeId
+	 * @return String : cuttedId
 	 */
-	public String returnPostIdOnly(String completeId) {
+	public static String returnPostIdOnly(String completeId) {
 		if(completeId!=null){
 			String [] strTab = completeId.split("_");
 			if(strTab !=null && strTab.length>1){

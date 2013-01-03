@@ -3,13 +3,9 @@ package com.pigalon.restfb.test;
 import org.junit.Test;
 
 import com.pigalon.restfb.data.Constants;
-import com.pigalon.restfb.service.RestFBService;
-import com.pigalon.restfb.service.exportService;
-import com.pigalon.restfb.service.impl.RestFBServiceImpl;
-import com.pigalon.restfb.service.impl.exportServiceImpl;
-import com.restfb.Connection;
-import com.restfb.FacebookClient;
-import com.restfb.types.Post;
+import com.pigalon.restfb.service.ExportService;
+import com.pigalon.restfb.service.impl.ExportServiceImpl;
+
 
 public class FinalTest {
 	/**
@@ -24,17 +20,12 @@ public class FinalTest {
 	@Test
 	public void testToGrab(){
 		
-		exportService restFb = new exportServiceImpl();
+		ExportService restFb = new ExportServiceImpl();
 		
 		try {
 
-			RestFBService restFBService = new RestFBServiceImpl();
-			
-			FacebookClient facebookClient = restFBService.getAuthenticatedClient();
-			Connection<Post> groupFeed = restFBService.getGroupFeed(facebookClient, Constants.GROUP_ID);
-		
 			// export
-			restFb.exportLinkToCsv(groupFeed);
+			restFb.exportAllLinks(Constants.GROUP_ID);
 		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

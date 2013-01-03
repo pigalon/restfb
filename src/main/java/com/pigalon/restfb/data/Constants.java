@@ -14,7 +14,7 @@ public interface Constants {
 	/*
 	 * FIRST STEP : GIVE YOUR ACCESS TOKEN HERE !!!
 	 */
-	static String MY_ACCESS_TOKEN = "AAACEdEose0cBAMR16OIPof51kDoVi2zZCVZC2z06vj4RoX5h3D8anG2ZAphCKRbZBoP5NgFUhAqYyiCiipRDlh1AWZAgZBreJxkRikSQecjZC3u9AhZBforN";
+	static String MY_ACCESS_TOKEN = "";
 	
 	/*
 	 * GIVE THE ID OF THE GROUP HERE, ex for indie group = 125514040798822
