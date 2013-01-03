@@ -12,19 +12,29 @@ public interface Constants {
 	
 	
 	/*
-	 * FIRST STEP : PUT YOUR ACCESS TOKEN HERE !!!
+	 * FIRST STEP : GIVE YOUR ACCESS TOKEN HERE !!!
 	 */
-	static String MY_ACCESS_TOKEN = "";
+	static String MY_ACCESS_TOKEN = "AAACEdEose0cBAMR16OIPof51kDoVi2zZCVZC2z06vj4RoX5h3D8anG2ZAphCKRbZBoP5NgFUhAqYyiCiipRDlh1AWZAgZBreJxkRikSQecjZC3u9AhZBforN";
 	
 	/*
-	 * PUT THE ID OF THE GROUP HERE, ex for indie group = 125514040798822
+	 * GIVE THE ID OF THE GROUP HERE, ex for indie group = 125514040798822
 	 */
 	static String GROUP_ID = "125514040798822";
 	
 	/*
-	 * PUT THE NAME OF THE EXPORT FILE
+	 * GIVE THE NAME OF THE EXPORT FILE
 	 */
-	static String EXPORT_FILE = "test.csv";
+	static String EXPORT_FILE = "export.csv";
+	
+	/*
+	 * GIVE THE NAME OF THE EXPORT FILE SEPARATOR
+	 */
+	static String EXPORT_FILE_SEPARATOR = ";";
+	
+	/*
+	 * GIVE THE NAME OF THE SAVE FILE
+	 */
+	static String SAVE_FILE = "save.csv";
 	
 	
 	//*************** DON'T TOUCH THE FOLLOWING CONSTANTS ********************
@@ -34,21 +44,5 @@ public interface Constants {
 	 * To avoid a FB query overhead (limit = 600 queries / 600 sec)
 	 */
 	static int FB_QUERY_DELAY =1500;
-	
-	/*
-	 * -------- URL part -----------
-	 */
-	static String URL_PART_YOUTUBE = "youtu"; // because youtube.com ou youtu.be ...
-	static String URL_PART_VIMEO = "vimeo";
-	static String URL_PART_BANDCAMP = "bandcamp";
-	static String URL_PART_SOUNDCLOUND = "soundcloud";
-	
-	/*
-	 * ------- URL type characters ------
-	 */
-	static String URL_TYPE_YOUTUBE_TYPE = "Y";
-	static String URL_TYPE_VIMEO_URL_TYPE = "V";
-	static String URL_TYPE_BANDCAMP_URL_TYPE = "B";
-	static String URL_TYPE_SOUNDCOULD = "S";
 	
 }

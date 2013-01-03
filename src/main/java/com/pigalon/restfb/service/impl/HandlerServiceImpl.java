@@ -1,6 +1,6 @@
 package com.pigalon.restfb.service.impl;
 
-import com.pigalon.restfb.data.Constants;
+import com.pigalon.restfb.data.LinkUrl;
 import com.pigalon.restfb.service.HandlerService;
 import com.restfb.types.Post;
 
@@ -33,18 +33,17 @@ public class HandlerServiceImpl implements HandlerService {
 	public String returnUrIdlAndType(Post post){
 		try {
 			
-			if(post.getLink().contains(Constants.URL_PART_YOUTUBE)){
-				return "Y ; " + new YoutubeUrlProcessing().idExtractionFromUrl(post.getLink());
+			if(post.getLink().contains(LinkUrl.YOUTUBE.getUrlPart())){
+				return LinkUrl.YOUTUBE.getUrlType() + " ; " + new YoutubeUrlProcessing().idExtractionFromUrl(post.getLink());
 			}
-			else if(post.getLink().contains(Constants.URL_PART_VIMEO)){
-				
-				return "V ; " + new VimeoUrlProcessing().idExtractionFromUrl(post.getLink());
+			else if(post.getLink().contains(LinkUrl.VIMEO.getUrlPart())){
+				return LinkUrl.VIMEO.getUrlType() + " ; " + new VimeoUrlProcessing().idExtractionFromUrl(post.getLink());
 			}
-			else if(post.getLink().contains(Constants.URL_PART_BANDCAMP)){
-				return "B ; " + new BandcampUrlProcessing().idExtractionFromUrl(post.getLink());
+			else if(post.getLink().contains(LinkUrl.BANDCAMP.getUrlPart())){
+				return LinkUrl.BANDCAMP.getUrlType() + " ; " + new BandcampUrlProcessing().idExtractionFromUrl(post.getLink());
 			}
-			else if(post.getLink().contains(Constants.URL_PART_SOUNDCLOUND)){
-				return "S ; " + new SoundCloundUrlProcessing().idExtractionFromUrl(post.getLink());
+			else if(post.getLink().contains(LinkUrl.SOUNDCLOUND.getUrlPart())){
+				return LinkUrl.SOUNDCLOUND.getUrlType() + " ; " + new SoundCloundUrlProcessing().idExtractionFromUrl(post.getLink());
 			}
 		} catch (Exception e) {
 			//TODO log just url without query no erroris throwing, 
