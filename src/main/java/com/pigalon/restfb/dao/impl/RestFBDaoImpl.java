@@ -15,11 +15,20 @@ import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
 import com.restfb.types.Post;
-
+/**
+ * Handler and access class to the REst FB API 
+ * @author Pierrick
+ *
+ */
 public class RestFBDaoImpl implements RestFBDao {
-
+	/**
+	 * Main connection object
+	 */
 	final FacebookClient facebookClient = new DefaultFacebookClient(Constants.MY_ACCESS_TOKEN);
 	
+	/**
+	 * handler service : to cut ids
+	 */
 	final HandlerService handlerService = new HandlerServiceImpl();
 	
 
@@ -33,13 +42,22 @@ public class RestFBDaoImpl implements RestFBDao {
 				   Ordering.natural().onResultOf(applyFunction);
 	
 	
-	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.pigalon.restfb.service.RestFBDao#getGroupFeed(String groupName)
+	 */
 	public Connection<Post> getGroupFeed(String groupName) {
 		return facebookClient.fetchConnection(groupName+"/feed", Post.class);
 	}
 	
-	public Connection<Post> getLimitedGroupFeed(String groupName) {
-		 return facebookClient.fetchConnection(groupName+"/feed", Post.class, Parameter.with("limit", 1));
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.pigalon.restfb.service.RestFBDao#getLimitedGroupFeed(String groupName, int number)
+	 */
+	public Connection<Post> getLimitedGroupFeed(String groupName, int number) {
+		 return facebookClient.fetchConnection(groupName+"/feed", Post.class, Parameter.with("limit", number));
 	}
 
 	/*
@@ -91,7 +109,7 @@ public class RestFBDaoImpl implements RestFBDao {
 	 * @see com.pigalon.restfb.service.RestFBDao#getLastPostId(String groupName)
 	 */
 	public String getLastPostIdFromGroup(String groupName) {
-		 Connection<Post> connection =  getGroupFeed(groupName);
+		 Connection<Post> connection =  getLimitedGroupFeed(groupName, 1);
 		 if(connection.getData()!=null){
 			 return handlerService.returnPostIdOnly(connection.getData().get(0).getId());
 		 }

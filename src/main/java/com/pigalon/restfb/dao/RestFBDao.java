@@ -16,9 +16,15 @@ public interface RestFBDao {
 	 * @return Connection<Post> : RestFB object contains all post of a feed
 	 */
 	Connection<Post> getGroupFeed(String groupName);
+	/**
+	 * get a limited feed of FB Group
+	 * @param groupName
+	 * @return Connection<Post> : RestFB object contains all post of a feed
+	 */
+	Connection<Post> getLimitedGroupFeed(String groupName, int number);
 	
 	/**
-	 * get all Posts from the bginnin or from the id limit
+	 * get all Posts from the beginning or from the id limit
 	 * @param groupName
 	 * @param idLimit
 	 * @return List<Post>
